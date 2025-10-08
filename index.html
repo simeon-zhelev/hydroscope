@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HydroScope · Water Engineer Portfolio</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --accent: #3c82f6;
+      --text-dark: #1f2933;
+      --text-mid: #52606d;
+      --border: #d2d8e2;
+      --placeholder: #c5d0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg);
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 48px;
+      padding: 64px 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 24px;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-mid);
+      margin: 0 0 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .cta-secondary {
+      color: var(--text-dark);
+      background: transparent;
+      border: 1px dashed var(--border);
+    }
+
+    .placeholder-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: repeating-linear-gradient(
+        135deg,
+        var(--placeholder),
+        var(--placeholder) 14px,
+        #dde5f3 14px,
+        #dde5f3 28px
+      );
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .tagline {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e1ecff;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-heading {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .section-subheading {
+      margin: 0 0 32px;
+      color: var(--text-mid);
+      max-width: 720px;
+    }
+
+    .sections {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-mid);
+    }
+
+    .stat-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      background: #f0f4fb;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card .placeholder-img {
+      border-radius: 0;
+    }
+
+    .project-body {
+      padding: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-metadata {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+    }
+
+    .process {
+      display: grid;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .process-step strong {
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-style: italic;
+      color: var(--text-mid);
+    }
+
+    blockquote footer {
+      margin-top: 16px;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .cta-banner {
+      background: var(--accent);
+      color: #fff;
+      padding: 48px;
+      border-radius: 16px;
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-mid);
+      background: #eef3fb;
+    }
+
+    footer .footer-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    footer h4 {
+      margin: 0 0 12px;
+      color: var(--text-dark);
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <nav>
+        <div>
+          <strong>HydroScope</strong>
+          <div style="font-size: 0.8rem; color: var(--text-mid);">Water Engineering Portfolio</div>
+        </div>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Case Studies</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell hero">
+      <div>
+        <span class="tagline">Sustainable water systems for communities</span>
+        <h1>Designing resilient water infrastructure from source to tap.</h1>
+        <p>
+          Showcase your expertise in hydraulic modeling, watershed restoration, and climate-adaptive
+          infrastructure. Use this wireframe to map key project highlights and invite future collaborators.
+        </p>
+        <div class="cta-row">
+          <a class="cta-button" href="#contact">Plan a discovery call</a>
+          <a class="cta-button cta-secondary" href="#projects">View portfolio map</a>
+        </div>
+        <div class="stat-stack">
+          <div class="stat">
+            <strong>40+</strong>
+            Municipal networks modernized
+          </div>
+          <div class="stat">
+            <strong>25%</strong>
+            Average efficiency gains delivered
+          </div>
+          <div class="stat">
+            <strong>18</strong>
+            Years safeguarding watersheds
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="placeholder-img" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="services" class="shell sections">
+      <h2 class="section-heading">Core services</h2>
+      <p class="section-subheading">
+        Highlight the specialized services you offer, from advanced hydraulic modeling to permitting and field inspections.
+      </p>
+      <div class="grid">
+        <article class="card">
+          <h3>Watershed Diagnostics</h3>
+          <p>Rapid assessments that map threats, inflow patterns, and restoration opportunities in river basins.</p>
+        </article>
+        <article class="card">
+          <h3>Utility Infrastructure Design</h3>
+          <p>Concept-to-detail designs for treatment plants, distribution networks, and resilient storage.</p>
+        </article>
+        <article class="card">
+          <h3>Resilience Planning</h3>
+          <p>Climate-forward strategies that model flood, drought, and contamination scenarios.</p>
+        </article>
+        <article class="card">
+          <h3>Regulatory Stewardship</h3>
+          <p>Permitting roadmaps, stakeholder workshops, and compliance documentation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="shell sections">
+      <h2 class="section-heading">Portfolio snapshots</h2>
+      <p class="section-subheading">
+        Use these project cards to surface results, your role, partners, and metrics. Swap the placeholders with hero imagery during visual design.
+      </p>
+      <div class="grid">
+        <article class="project-card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Tidal Basin Renewal</h3>
+            <div class="project-metadata">
+              <span>Role: Lead Hydro Engineer</span>
+              <span>City of Evergreen</span>
+            </div>
+            <p>Modeled tidal exchange, upgraded pumping stations, and introduced adaptive barriers improving water quality by 38%.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Highland Reservoir Upgrade</h3>
+            <div class="project-metadata">
+              <span>Role: Project Manager</span>
+              <span>BluePeak Utilities</span>
+            </div>
+            <p>Delivered a smart control network, boosting delivery efficiency and reducing unaccounted water by 22%.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="placeholder-img" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3>Stormwater Greenways</h3>
+            <div class="project-metadata">
+              <span>Role: Hydrologist</span>
+              <span>Lakefront County</span>
+            </div>
+            <p>Deployed bioswale corridors and retention wetlands to deflect peak flows while creating 12 acres of habitat.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="shell sections">
+      <h2 class="section-heading">Process map</h2>
+      <p class="section-subheading">
+        Show prospects how you move from feasibility studies to long-term stewardship. Each block can expand with diagrams in later design phases.
+      </p>
+      <div class="process">
+        <div class="process-step">
+          <strong>01</strong>
+          <div>
+            <h3>Discovery &amp; Baseline Modeling</h3>
+            <p>Site visits, stakeholder interviews, and preliminary hydraulic models to frame goals and constraints.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <strong>02</strong>
+          <div>
+            <h3>Concept Engineering</h3>
+            <p>Scenario analysis, budget forecasting, and high-level schematics to align teams on direction.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <strong>03</strong>
+          <div>
+            <h3>Detailed Design</h3>
+            <p>Hydraulic calculations, BIM coordination, and permitting packages ready for agency review.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <strong>04</strong>
+          <div>
+            <h3>Implementation &amp; Monitoring</h3>
+            <p>Construction oversight, commissioning, operator training, and data-driven performance tracking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell sections">
+      <h2 class="section-heading">Voices from the field</h2>
+      <p class="section-subheading">
+        Placeholders for testimonials that demonstrate stewardship, collaboration, and measurable outcomes.
+      </p>
+      <div class="grid">
+        <blockquote>
+          “Their modeling clarity and communication with our council smoothed approvals and cut months off scheduling.”
+          <footer>— Maya Ellis, City Water Director</footer>
+        </blockquote>
+        <blockquote>
+          “We hit our conservation targets in year one thanks to the monitoring dashboards and adaptive playbooks delivered.”
+          <footer>— Ricardo Gomez, Utility COO</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="contact" class="shell sections">
+      <div class="cta-banner">
+        <h2>Let’s chart your next resilient water system.</h2>
+        <p>Position this call-to-action as the primary inquiry form or scheduler once the visual design phase begins.</p>
+        <div class="cta-row" style="justify-content: center;">
+          <a class="cta-button cta-secondary" href="mailto:hello@hydroscope.studio">hello@hydroscope.studio</a>
+          <a class="cta-button" href="#!">Download credentials deck</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div>
+        <h4>HydroScope</h4>
+        <p>
+          Portfolio wireframe for water engineering professionals. Swap content blocks as you tailor the brand and voice.
+        </p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Case Studies</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Credentials</h4>
+        <ul>
+          <li>PE · Water Resources</li>
+          <li>Certified Floodplain Manager</li>
+          <li>LEED AP · Neighborhood Development</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Offices</h4>
+        <ul>
+          <li>Seattle, WA</li>
+          <li>Boise, ID</li>
+          <li>Remote worldwide</li>
+        </ul>
+      </div>
+    </div>
+    <div class="shell" style="padding-top: 32px; color: #7b8794;">
+      © 2024 HydroScope Engineering Studio. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
+
